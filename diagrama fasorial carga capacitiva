@@ -26,6 +26,6 @@ quiver(real(V+Vr), imag(V+Vr), real(Vx), imag(Vx), 0, 'm', 'LineWidth',2)
 quiver(0,0, real(E), imag(E), 0, 'b', 'LineWidth',2)
 
 legend('V_T','I_a','r_a I_a','jX_s I_a','E_a')
-title('Diagrama Fasorial - Carga Capacitiva')
+title('Diagrama Fasorial - Carga Capacitiva ')
 xlabel('Parte Real')
 ylabel('Parte Imaginária')
