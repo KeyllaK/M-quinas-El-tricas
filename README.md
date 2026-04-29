@@ -31,6 +31,13 @@ Saturação
 Magnetismo residual
 Força coerciva
 
+🔹 4. Diagramas Fasoriais 
+Diagramas construídos considerando o modelo real da máquina síncrona, implementados três casos:
+
+⚡ Carga Indutiva
+⚡ Carga Resistiva
+⚡ Carga Capacitiva
+
 ⚙️ Requisitos
 MATLAB instalado 
 ▶️ Como Executar
