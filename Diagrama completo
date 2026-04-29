@@ -1,0 +1,65 @@
+clc; clear; close all;
+
+V = 1;        % tensão de referência
+ra = 0.3;     % resistência
+Xs = 1;       % reatância
+
+% Ângulos
+theta_ind = deg2rad(-30); % indutiva (atrasada)
+theta_res = 0;            % resistiva
+theta_cap = deg2rad(30);  % capacitiva (adiantada)
+
+% Correntes
+Ia_ind = 0.8 * exp(1j*theta_ind);
+Ia_res = 0.8 * exp(1j*theta_res);
+Ia_cap = 0.8 * exp(1j*theta_cap);
+
+% Quedas
+Vr_ind = ra * Ia_ind;
+Vx_ind = 1j * Xs * Ia_ind;
+
+Vr_res = ra * Ia_res;
+Vx_res = 1j * Xs * Ia_res;
+
+Vr_cap = ra * Ia_cap;
+Vx_cap = 1j * Xs * Ia_cap;
+
+% Tensões internas
+E_ind = V + Vr_ind + Vx_ind;
+E_res = V + Vr_res + Vx_res;
+E_cap = V + Vr_cap + Vx_cap;
+
+figure;
+
+% ---------- INDUTIVA ----------
+subplot(1,3,1)
+hold on; grid on; axis equal;
+quiver(0,0, real(V), imag(V), 0, 'k','LineWidth',2)
+quiver(0,0, real(Ia_ind), imag(Ia_ind), 0, 'g','LineWidth',2)
+quiver(real(V), imag(V), real(Vr_ind), imag(Vr_ind), 0, 'r','LineWidth',2)
+quiver(real(V+Vr_ind), imag(V+Vr_ind), real(Vx_ind), imag(Vx_ind), 0, 'm','LineWidth',2)
+quiver(0,0, real(E_ind), imag(E_ind), 0, 'b','LineWidth',2)
+title('Carga Indutiva')
+legend('V_T','I_a','r_a I_a','jX_s I_a','E_a')
+
+% ---------- RESISTIVA ----------
+subplot(1,3,2)
+hold on; grid on; axis equal;
+quiver(0,0, real(V), imag(V), 0, 'k','LineWidth',2)
+quiver(0,0, real(Ia_res), imag(Ia_res), 0, 'g','LineWidth',2)
+quiver(real(V), imag(V), real(Vr_res), imag(Vr_res), 0, 'r','LineWidth',2)
+quiver(real(V+Vr_res), imag(V+Vr_res), real(Vx_res), imag(Vx_res), 0, 'm','LineWidth',2)
+quiver(0,0, real(E_res), imag(E_res), 0, 'b','LineWidth',2)
+title('Carga Resistiva')
+legend('V_T','I_a','r_a I_a','jX_s I_a','E_a')
+
+% ---------- CAPACITIVA ----------
+subplot(1,3,3)
+hold on; grid on; axis equal;
+quiver(0,0, real(V), imag(V), 0, 'k','LineWidth',2)
+quiver(0,0, real(Ia_cap), imag(Ia_cap), 0, 'g','LineWidth',2)
+quiver(real(V), imag(V), real(Vr_cap), imag(Vr_cap), 0, 'r','LineWidth',2)
+quiver(real(V+Vr_cap), imag(V+Vr_cap), real(Vx_cap), imag(Vx_cap), 0, 'm','LineWidth',2)
+quiver(0,0, real(E_cap), imag(E_cap), 0, 'b','LineWidth',2)
+title('Carga Capacitiva')
+legend('V_T','I_a','r_a I_a','jX_s I_a','E_a')
