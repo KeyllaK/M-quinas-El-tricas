@@ -1,0 +1,17 @@
+clc; clear; close all;
+ 
+% Corrente de campo (If)
+If = linspace(0, 10, 50);
+ 
+% Relação linear (Ia proporcional a If)
+k = 2; % constante (depende da máquina)
+Ia = k * If;
+ 
+% Plot
+figure;
+plot(If, Ia, '-o', 'LineWidth', 2)
+grid on
+ 
+xlabel('Corrente de Campo (If)')
+ylabel('Corrente de Armadura (Ia)')
+title('Curva de Curto-Circuito (Ia x If)')
