@@ -1,1 +1,29 @@
-aaaaa
+clc; clear; close all;
+ 
+% Campo magnético (H) variando para frente e para trás
+H_max = 10;
+H1 = linspace(-H_max, H_max, 200);   % ida
+H2 = linspace(H_max, -H_max, 200);   % volta
+ 
+% Parâmetros do material
+a = 0.5;     % controla a inclinação
+b = 2;       % controla a saturação
+c = 1.5;     % controla a histerese (abertura do laço)
+ 
+% Curva de subida (magnetização)
+B1 = b * tanh(a * H1 + c);
+ 
+% Curva de descida (desmagnetização)
+B2 = b * tanh(a * H2 - c);
+ 
+% Plot
+figure;
+plot(H1, B1, 'LineWidth', 2); hold on;
+plot(H2, B2, 'LineWidth', 2);
+ 
+grid on;
+xlabel('Campo Magnético (H)');
+ylabel('Densidade de Fluxo (B)');
+title('Ciclo de Histerese Magnética');
+ 
+legend('Magnetização', 'Desmagnetização');
