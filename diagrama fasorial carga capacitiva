@@ -1,0 +1,31 @@
+clc; clear; close all;
+
+% Dados
+V = 1;                        
+theta = deg2rad(30);   % capacitiva (adiantada)
+
+Ia = 0.8 * exp(1j*theta);
+
+ra = 0.3;     % resistência
+Xs = 1;       % reatância
+
+Vr = ra * Ia;         % queda resistiva
+Vx = 1j * Xs * Ia;    % queda reativa
+
+E = V + Vr + Vx;      % tensão interna correta
+
+% Plot
+figure;
+hold on; grid on; axis equal;
+
+% Vetores
+quiver(0,0, real(V), imag(V), 0, 'k', 'LineWidth',2)
+quiver(0,0, real(Ia), imag(Ia), 0, 'g', 'LineWidth',2)
+quiver(real(V), imag(V), real(Vr), imag(Vr), 0, 'r', 'LineWidth',2)
+quiver(real(V+Vr), imag(V+Vr), real(Vx), imag(Vx), 0, 'm', 'LineWidth',2)
+quiver(0,0, real(E), imag(E), 0, 'b', 'LineWidth',2)
+
+legend('V_T','I_a','r_a I_a','jX_s I_a','E_a')
+title('Diagrama Fasorial - Carga Capacitiva')
+xlabel('Parte Real')
+ylabel('Parte Imaginária')
