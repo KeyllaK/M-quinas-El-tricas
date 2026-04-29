@@ -40,5 +40,5 @@ Execute no Command Window ou como script (.m)
 O gráfico será exibido automaticamente
 
 🚀 Como Executar
-Clone o repositório: git clone [https://github.com/KeyllaK/CNN-convulacional.git]
+Clone o repositório: git clone [https://github.com/KeyllaK/M-quinas-El-tricas.git]
 
